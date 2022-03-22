@@ -1,0 +1,34 @@
+#  (Git Bash)
+# This part I was created the folder structure of my final project.
+# 1. Understand folder structure. Perform operations on files in different folders.
+cd C:\Users\Kristof\Desktop
+# create directories
+mkdir C:\Users\Kristof/Desktop/coding_project_2022/CEU_coding_project/raw_data
+mkdir C:\Users\Kristof/Desktop/coding_project_2022/CEU_coding_project/derived_data
+mkdir C:\Users\Kristof/Desktop/coding_project_2022/CEU_coding_project/do_files
+mkdir C:\Users\Kristof/Desktop/coding_project_2022/CEU_coding_project/python_codes
+
+# change directory
+cd C:\Users\Kristof/Desktop/coding_project_2022/CEU_coding_project
+# list directories
+ls
+# group directories
+mkdir codes
+mkdir data
+# move data
+move raw_data data
+move derived_data data
+
+# move coding directories
+move do_files codes
+move python_codes codes
+
+# see changes
+ls -lFh
+
+
+
+
+
+
+
