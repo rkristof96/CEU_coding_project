@@ -25,12 +25,12 @@ for i in range(3):
 
 # separete county and state name
 def pure_county_name(x):
-    y=x.split('_')
-    return y[0]
+    y=x.split('_') # split names by "_"
+    return y[0] # return value , only name of the county and not the name of the state
 
 # division function
 def divide(nominator,denominator):
-    solution=nominator/denominator
+    solution=nominator/denominator # simple division
     return solution
 
 # print the results
@@ -40,9 +40,9 @@ def report_unemployment_rate(unemployment_rate, county):
 
 # putting everything together
 for i in range(3):
-    unemp_rate=divide(unemployed[i],population[i])
-    county_name=pure_county_name(data["County"][i])
-    print(report_unemployment_rate(unemp_rate,county_name))
+    unemp_rate=divide(unemployed[i],population[i]) # calc unemp rate 
+    county_name=pure_county_name(data["County"][i]) # get county name
+    print(report_unemployment_rate(unemp_rate,county_name)) # report results
 
 
 # 4.Use Python “lists” and “dictionaries” appropriately. Demonstrate one of the two.
@@ -50,13 +50,13 @@ for i in range(3):
 state=data["State"] #string
 uninsured=data["Uninsured"]# unisured 
 #list
-state_uninsured=list(state[0:3])
+state_uninsured=list(state[0:3]) # deife small list
 
 # appending to list and printing results
 for i in range(3):
-    state_uninsured.append(uninsured[i])
+    state_uninsured.append(uninsured[i]) # append values to a list
     print('proportion of uninsured in '+state_uninsured[i]+' = '+str(round(state_uninsured[(i+3)],2)))
-
+    # print values from a list
 
 cumulative=0
 
@@ -67,12 +67,13 @@ print(cumulative)
 
 # append more items at the same time
 tmp=list(['Chicago', 'New York', 'Washington'])
-tmp.append(list([1,2,3]))
+tmp.append(list([1,2,3])) # append more values at the same time
 print(tmp)
 
 # dictionary
 from yahoofinancials import YahooFinancials
 # getting data from yahoo finance and make some calculation
+# results have a dictionary format
 # firm is PFG (its ticker is PFG, an insurance company)
 tickers = ['PFG']
 # read adata
@@ -80,6 +81,7 @@ yahoo_financials = YahooFinancials(tickers)
 # get income statement
 income = yahoo_financials.get_financial_stmts('annual', 'income', reformat=True)
 # format of income is a combination of list and dictionary
+# I ams electing step by step the relevant data
 income_history=income.get('incomeStatementHistory')
 income_history_PFG=income_history.get('PFG')
 income_history_PFG_2021=income_history_PFG[0].get('2021-12-31')
