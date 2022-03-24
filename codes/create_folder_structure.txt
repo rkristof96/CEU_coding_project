@@ -7,7 +7,7 @@ mkdir C:\Users\Kristof/Desktop/coding_project_2022/CEU_coding_project/raw_data
 mkdir C:\Users\Kristof/Desktop/coding_project_2022/CEU_coding_project/derived_data
 mkdir C:\Users\Kristof/Desktop/coding_project_2022/CEU_coding_project/do_files
 mkdir C:\Users\Kristof/Desktop/coding_project_2022/CEU_coding_project/python_codes
-
+mkdir C:\Users\Kristof/Desktop/coding_project_2022/CEU_coding_project/plots
 # change directory
 cd C:\Users\Kristof/Desktop/coding_project_2022/CEU_coding_project
 # list directories

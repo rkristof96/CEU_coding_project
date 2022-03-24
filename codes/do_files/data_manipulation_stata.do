@@ -1,5 +1,9 @@
- ***
-import delimited "C:\Users\Kristof\Desktop\coding_project_2022\CEU_coding_project\data\raw_data\health2019_part2.csv", delimiters(";") clear 
+****
+**change
+cd "C:\Users\Kristof\Desktop\coding_project_2022\CEU_coding_project"
+***import delimited "C:\Users\Kristof\Desktop\coding_project_2022\CEU_coding_project\data\raw_data\health2019_part2.csv", delimiters(";") clear 
+import delimited "data\raw_data\health2019_part2.csv", delimiters(";") clear 
+
 *8.Fix common data quality errors in Stata (for example, string vs number, missing value).
 * string encode to "factor"
 encode presence_of_violation, gen(violation)
@@ -19,26 +23,30 @@ count if missing(sph)
 * install package to inpute data
 *15. Install a Stata package. (Can be the same as we already did in class.)
 ssc install fillmissing, replace
+*package is used to imput data
 * input data with mean
 fillmissing sph, with (mean)
 
 *11. Save data in Stata.
-save "C:\Users\Kristof\Desktop\coding_project_2022\CEU_coding_project\data\derived_data\health2019_partb.dta", replace
+save "data\derived_data\health2019_new.dta", replace
+
+
+
  *7.Read .csv data in in Stata.
  
 *import delimited "C:\Users\Kristof\Desktop\coding_project_2022\CEU_coding_project\data\raw_data\health2019.csv", clear
 
-import delimited using "C:\Users\Kristof\Desktop\coding_project_2022\CEU_coding_project\data\raw_data\health2019_part1.csv",  varnames(1) bindquotes(strict) delimiters(";")  clear
+import delimited using "data\raw_data\health2019_part1.csv",  varnames(1) bindquotes(strict) delimiters(";")  clear
 *encoding("utf-8") not necessary and not working
 
 **9.Aggregate, reshape, and combine data for analysis in Python or Stata. Demonstrate at least one of these data manipulations.
 *merge data sets
-merge 1:1 county using "C:\Users\Kristof\Desktop\coding_project_2022\CEU_coding_project\data\derived_data\health2019_partb.dta"
+merge 1:1 county using "data\derived_data\health2019_new.dta"
 
 *11. Save data in Stata.
-save "C:\Users\Kristof\Desktop\coding_project_2022\CEU_coding_project\data\derived_data\health2019.dta", replace
+save "data\derived_data\health2019.dta", replace
 
-
+use  "data\derived_data\health2019.dta", clear
 
 *string to num
 *Fix common data quality errors in Stata (for example, string vs number, missing value).
@@ -79,7 +87,7 @@ codebook ind
 
 *}
 
-
+use  "data\derived_data\health2019.dta", clear
 *10.Prepare a sample for analysis by filtering observations and variables and creating transformations of variables. Demonstrate all three.
 * keep variables (filter variables)
 keep violation with_access_num alcohol_impaired_num chlamydia_rate_num teen_birth_rate_num pcp_rate_num some_college_num unemployed_num lbw_num income_ratio population_25_44 vaccinated county state
@@ -89,7 +97,7 @@ summarize vaccinated
 * select below mean vaccination
 * create variables to filter observations
 gen low_vaccination = 1 if vaccinated < r(vaccinated)
-keep d10==1 
+ 
 gen vaccinated_per_population= vaccinated/population_25_44
 * too many countries
 * calculate quantiles
@@ -98,9 +106,11 @@ xtile d10=vaccinated,n(10)
 
 * 13. Create a graph (of any type) in State.
 graph twoway (scatter vaccinated income_ratio if state == "Kentucky" & low_vaccination==1 ) (scatter vaccinated income_ratio if state == "Texas" & low_vaccination==1), xsc(log) ysc(log) xti("Income ratio") yti("Vaccinated") title("Vaccination and income ratio below average vaccination")legend(label(1 Kentucky) label(2 Texas)) 
-graph export "C:\Users\Kristof\Desktop\coding_project_2022\CEU_coding_project\plots\vaccinated1.png"
+graph export "plots\vaccinated1.png"
+*, replace
 graph twoway (scatter vaccinated income_ratio if state == "Kentucky" & d10==1 ) (scatter vaccinated income_ratio if state == "Texas" & d10==1), xsc(log) ysc(log) xti("Income ratio") yti("Vaccinated") title("Vaccination and income ratio in 1st decile")legend(label(1 Kentucky) label(2 Texas)) 
-graph export "C:\Users\Kristof\Desktop\coding_project_2022\CEU_coding_project\plots\vaccinated2.png"
+graph export "plots\vaccinated2.png"
+*, replace
 
 *12.Run ordinary least squares regression in Stata.
 tabulate violation, gen(violationfe)
@@ -108,10 +118,12 @@ eststo vaccinated_regression: regress vaccinated income_ratio violationfe* lbw_n
 predict vaccinated_hat
 
 graph twoway (scatter vaccinated vaccinated_hat) (lfitci vaccinated vaccinated_hat), title(Regression output correlation) xti("Vaccinated") yti("Predicted value")xsc(log) ysc(log)
-graph export "C:\Users\Kristof\Desktop\coding_project_2022\CEU_coding_project\plots\residuals.png"
+graph export "plots\residuals.png"
+*, replace
 
 
 
 *14. Save regression tables and graphs as files. Demonstrate both.
 ***ssc outreg2
+cd "codes\do_files"
 outreg2 using vaccinated, word append ctitle("Vaccinated") drop(violationfe*) addtext(Violation fixed effect, YES) label
