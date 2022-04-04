@@ -53,4 +53,4 @@ graph export "plots\residuals.png", replace
 *14. Save regression tables and graphs as files. Demonstrate both.
 ***ssc outreg2
 cd "codes\do_files"
-outreg2 using vaccinated, word append ctitle("Vaccinated") drop(violationfe*) addtext(Violation fixed effect, YES) label, replace
+outreg2 using vaccinated, word append ctitle("Vaccinated") drop(violationfe*) addtext(Violation fixed effect, YES) label replace
