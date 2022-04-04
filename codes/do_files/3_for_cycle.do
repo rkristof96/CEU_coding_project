@@ -1,7 +1,11 @@
+****
+**change
+cd "C:\Users\Kristof\Desktop\coding_project_2022\CEU_coding_project"
+
 use  "data\derived_data\health2019.dta", clear
 
 *string to num
-*Fix common data quality errors in Stata (for example, string vs number, missing value).
+*8.Fix common data quality errors in Stata (for example, string vs number, missing value).
 
 foreach var of varlist lbw with_access alcohol_impaired chlamydia_rate teen_birth_rate pcp_rate some_college unemployed{
 encode `var', gen(`var'_num)
