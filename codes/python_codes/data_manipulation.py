@@ -1,3 +1,4 @@
+# set python codes as working directory
 # import library
 import pandas as pd
 
@@ -50,7 +51,7 @@ for i in range(3):
 state=data["State"] #string
 uninsured=data["Uninsured"]# unisured 
 #list
-state_uninsured=list(state[0:3]) # deife small list
+state_uninsured=list(state[0:3]) # define small list
 
 # appending to list and printing results
 for i in range(3):
