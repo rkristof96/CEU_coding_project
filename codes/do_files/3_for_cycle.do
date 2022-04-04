@@ -34,3 +34,6 @@ replace ind = `i' if ind`i' ==1
 }
 
 codebook ind
+
+
+save  "data\derived_data\health2019_manipulated.dta", replace

@@ -1,4 +1,4 @@
-# set python codes as working directory
+# set python_codes as working directory
 # import library
 import pandas as pd
 
@@ -83,12 +83,12 @@ yahoo_financials = YahooFinancials(tickers)
 income = yahoo_financials.get_financial_stmts('annual', 'income', reformat=True)
 # format of income is a combination of list and dictionary
 # I ams electing step by step the relevant data
-income_history=income.get('incomeStatementHistory')
-income_history_PFG=income_history.get('PFG')
-income_history_PFG_2021=income_history_PFG[0].get('2021-12-31')
+income_history=income['incomeStatementHistory']
+income_history_PFG=income_history['PFG']
+income_history_PFG_2021=income_history_PFG[0]['2021-12-31']
 # get costs and revenue
-total_op_expense=income_history_PFG_2021.get('totalOperatingExpenses')
-total_revenue=income_history_PFG_2021.get('totalRevenue')
+total_op_expense=income_history_PFG_2021['totalOperatingExpenses']
+total_revenue=income_history_PFG_2021['totalRevenue']
 # calculate cost share
 operational_cost_share=round(total_op_expense/total_revenue*100,2)
 # print the results

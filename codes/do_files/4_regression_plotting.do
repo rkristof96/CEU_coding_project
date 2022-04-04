@@ -1,4 +1,9 @@
-use  "data\derived_data\health2019.dta", clear
+****
+**change
+cd "C:\Users\Kristof\Desktop\coding_project_2022\CEU_coding_project"
+
+use "data\derived_data\health2019_manipulated.dta"
+*use  "data\derived_data\health2019.dta", clear
 *10.Prepare a sample for analysis by filtering observations and variables and creating transformations of variables. Demonstrate all three.
 * keep variables (filter variables)
 keep violation with_access_num alcohol_impaired_num chlamydia_rate_num teen_birth_rate_num pcp_rate_num some_college_num unemployed_num lbw_num income_ratio population_25_44 vaccinated county state
