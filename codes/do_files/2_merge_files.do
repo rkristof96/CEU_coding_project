@@ -1,3 +1,7 @@
+****
+**change
+cd "C:\Users\Kristof\Desktop\coding_project_2022\CEU_coding_project"
+
 *7.Read .csv data in in Stata.
  
 *import delimited "C:\Users\Kristof\Desktop\coding_project_2022\CEU_coding_project\data\raw_data\health2019.csv", clear
