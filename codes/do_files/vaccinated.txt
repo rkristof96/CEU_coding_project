@@ -1,31 +1,31 @@
-		(1)
-VARIABLES	LABELS	Vaccinated
-		
-income_ratio	Income_Ratio	-0.887***
-		(0.245)
-o.violationfe2	violation==Yes = o,	-
-		
-lbw_num	LBW	0.000955***
-		(0.000193)
-with_access_num	With_Access	0.00199***
-		(0.000203)
-alcohol_impaired_num	Alcohol_Impaired	-0.00125**
-		(0.000613)
-chlamydia_rate_num	Chlamydia_Rate	0.00154***
-		(0.000256)
-teen_birth_rate_num	Teen_Birth_Rate	-0.00124***
-		(0.000224)
-pcp_rate_num	PCP_Rate	0.000377*
-		(0.000196)
-some_college_num	Some_College	0.00173***
-		(0.000233)
-unemployed_num	Unemployed	-0.000139
-		(0.000205)
-Constant	Constant	37.73***
-		(1.275)
-		
-Observations		3,142
-R-squared		0.160
-Violation fixed effect		YES
-Standard errors in parentheses		
-*** p<0.01, ** p<0.05, * p<0.1		
+		(1)	(2)
+VARIABLES	LABELS	Vaccinated	Vaccinated
+			
+income_ratio	Income_Ratio	-0.887***	-0.887***
+		(0.245)	(0.245)
+o.violationfe2	violation==Yes = o,	-	-
+			
+lbw_num	LBW	0.000955***	0.000955***
+		(0.000193)	(0.000193)
+with_access_num	With_Access	0.00199***	0.00199***
+		(0.000203)	(0.000203)
+alcohol_impaired_num	Alcohol_Impaired	-0.00125**	-0.00125**
+		(0.000613)	(0.000613)
+chlamydia_rate_num	Chlamydia_Rate	0.00154***	0.00154***
+		(0.000256)	(0.000256)
+teen_birth_rate_num	Teen_Birth_Rate	-0.00124***	-0.00124***
+		(0.000224)	(0.000224)
+pcp_rate_num	PCP_Rate	0.000377*	0.000377*
+		(0.000196)	(0.000196)
+some_college_num	Some_College	0.00173***	0.00173***
+		(0.000233)	(0.000233)
+unemployed_num	Unemployed	-0.000139	-0.000139
+		(0.000205)	(0.000205)
+Constant	Constant	37.73***	37.73***
+		(1.275)	(1.275)
+			
+Observations		3,142	3,142
+R-squared		0.160	0.160
+Violation fixed effect		YES	YES
+Standard errors in parentheses			
+*** p<0.01, ** p<0.05, * p<0.1			
